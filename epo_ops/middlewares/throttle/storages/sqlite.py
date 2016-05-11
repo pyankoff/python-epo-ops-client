@@ -32,7 +32,8 @@ class SQLite(Storage):
         self.db_path = db_path
         makedirs(os.path.dirname(db_path))
         self.db = sqlite3.connect(
-            db_path, detect_types=sqlite3.PARSE_DECLTYPES
+            db_path, detect_types=sqlite3.PARSE_DECLTYPES,
+            check_same_thread=False
         )
         self.db.row_factory = sqlite3.Row
         self.prepare()
